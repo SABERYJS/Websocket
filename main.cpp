@@ -1,0 +1,8 @@
+#include <iostream>
+#include "public.h"
+#include "utils.h"
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}

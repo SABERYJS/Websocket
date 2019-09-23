@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/websocket.dir/main.cpp.o CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o CMakeFiles/websocket.dir/HttpResponse.cpp.o  -o websocket.exe -Wl,--out-implib,libwebsocket.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
