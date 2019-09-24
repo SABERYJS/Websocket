@@ -10,9 +10,17 @@
 #include <cstring>
 #include <unordered_map>
 #include <sys/socket.h>
+#include <netinet/in.h>
 #include <vector>
+#include <sys/types.h>
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <error.h>
+#include <errno.h>
 
 using namespace std;
+
+#define Socket_t int
 
 
 inline bool CharIsSpace(char c) {

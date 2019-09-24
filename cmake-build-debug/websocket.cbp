@@ -80,6 +80,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/e/code/websocket/Event.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/Event.h">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/EventHandler.h">
+			<Option target="websocket"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/HttpProtocolParser.cpp">
 			<Option target="websocket"/>
 		</Unit>
@@ -90,6 +99,15 @@
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/HttpResponse.h">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/Server.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/Server.h">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/SystemCallException.h">
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/WebsocketProtocolParser.cpp">

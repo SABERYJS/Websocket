@@ -123,6 +123,33 @@ websocket/fast:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/build
 .PHONY : websocket/fast
 
+Event.o: Event.cpp.o
+
+.PHONY : Event.o
+
+# target to build an object file
+Event.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Event.cpp.o
+.PHONY : Event.cpp.o
+
+Event.i: Event.cpp.i
+
+.PHONY : Event.i
+
+# target to preprocess a source file
+Event.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Event.cpp.i
+.PHONY : Event.cpp.i
+
+Event.s: Event.cpp.s
+
+.PHONY : Event.s
+
+# target to generate assembly for a file
+Event.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Event.cpp.s
+.PHONY : Event.cpp.s
+
 HttpProtocolParser.o: HttpProtocolParser.cpp.o
 
 .PHONY : HttpProtocolParser.o
@@ -176,6 +203,33 @@ HttpResponse.s: HttpResponse.cpp.s
 HttpResponse.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/HttpResponse.cpp.s
 .PHONY : HttpResponse.cpp.s
+
+Server.o: Server.cpp.o
+
+.PHONY : Server.o
+
+# target to build an object file
+Server.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Server.cpp.o
+.PHONY : Server.cpp.o
+
+Server.i: Server.cpp.i
+
+.PHONY : Server.i
+
+# target to preprocess a source file
+Server.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Server.cpp.i
+.PHONY : Server.cpp.i
+
+Server.s: Server.cpp.s
+
+.PHONY : Server.s
+
+# target to generate assembly for a file
+Server.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Server.cpp.s
+.PHONY : Server.cpp.s
 
 WebsocketProtocolParser.o: WebsocketProtocolParser.cpp.o
 
@@ -240,12 +294,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... websocket"
 	@echo "... edit_cache"
+	@echo "... Event.o"
+	@echo "... Event.i"
+	@echo "... Event.s"
 	@echo "... HttpProtocolParser.o"
 	@echo "... HttpProtocolParser.i"
 	@echo "... HttpProtocolParser.s"
 	@echo "... HttpResponse.o"
 	@echo "... HttpResponse.i"
 	@echo "... HttpResponse.s"
+	@echo "... Server.o"
+	@echo "... Server.i"
+	@echo "... Server.s"
 	@echo "... WebsocketProtocolParser.o"
 	@echo "... WebsocketProtocolParser.i"
 	@echo "... WebsocketProtocolParser.s"
