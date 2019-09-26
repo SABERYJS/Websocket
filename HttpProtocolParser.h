@@ -6,9 +6,10 @@
 #define WEBSOCKET_HTTPPROTOCOLPARSER_H
 
 #include "public.h"
+#include "SystemCallException.h"
 
 class HttpProtocolParser {
-private:
+protected:
     bool is_parse_finished;//whether http request header has been parse finished
     bool is_request_line_parse_finished;//whether  http request line has been parse finished
 protected:
@@ -19,6 +20,7 @@ protected:
     string uri;//request uri
     string http_version;//request http version
     int next_search_pos;
+    bool socket_closed;
 
     void InitStatus() {
         is_parse_finished = false;
@@ -27,11 +29,16 @@ protected:
         headers.clear();//clear parsed headers
         internal_buffer.clear();//clear internal buffer
         next_search_pos = 0;
+        socket_closed = false;
     }
 
     void ParseRequestLine(int pos);
 
     virtual void ProcessHttpHeader(string &name, string &value) = 0;
+
+    size_t ReadFromSocket();
+
+    void PrintHeaders();
 
 public:
     HttpProtocolParser() {

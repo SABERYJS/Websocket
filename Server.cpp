@@ -23,3 +23,23 @@ void Server::Listen() {
         throw SystemCallException((char *) "Listen Failed");
     }
 }
+
+
+void Server::Loop() {
+    CreateSocket();
+    Bind();
+    Listen();
+    event_loop.AddEvent(sock, EVENT_READABLE, this);
+    event_loop.Select();
+}
+
+bool Server::Handle(bool socket_should_close, void *event_loop) {
+    //has new connection
+    sockaddr_in s_ad;
+    socklen_t l;
+    client_connected = accept(sock, (sockaddr *) &s_ad, &l);
+    if (client_connected < 0) {
+        throw SystemCallException((char *) "Accept Called Failed");
+    }
+    return true;
+}

@@ -258,6 +258,33 @@ WebsocketProtocolParser.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.s
 .PHONY : WebsocketProtocolParser.cpp.s
 
+WebsocketServer.o: WebsocketServer.cpp.o
+
+.PHONY : WebsocketServer.o
+
+# target to build an object file
+WebsocketServer.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketServer.cpp.o
+.PHONY : WebsocketServer.cpp.o
+
+WebsocketServer.i: WebsocketServer.cpp.i
+
+.PHONY : WebsocketServer.i
+
+# target to preprocess a source file
+WebsocketServer.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketServer.cpp.i
+.PHONY : WebsocketServer.cpp.i
+
+WebsocketServer.s: WebsocketServer.cpp.s
+
+.PHONY : WebsocketServer.s
+
+# target to generate assembly for a file
+WebsocketServer.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketServer.cpp.s
+.PHONY : WebsocketServer.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -309,6 +336,9 @@ help:
 	@echo "... WebsocketProtocolParser.o"
 	@echo "... WebsocketProtocolParser.i"
 	@echo "... WebsocketProtocolParser.s"
+	@echo "... WebsocketServer.o"
+	@echo "... WebsocketServer.i"
+	@echo "... WebsocketServer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

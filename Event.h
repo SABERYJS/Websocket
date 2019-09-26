@@ -6,10 +6,13 @@
 #define WEBSOCKET_EVENT_H
 
 #include "public.h"
-#include "EventHandler.h"
+#include "EventCallback.h"
 #include <list>
 #include <set>
-#include  "SystemCallException.h"
+#include "SystemCallException.h"
+#include "Debug.h"
+
+using namespace std;
 
 class EventLoop {
 private:
@@ -19,8 +22,9 @@ private:
     list<int> original_readable;
     list<int> original_writeable;
     list<int> original_error_happened;
-    unordered_map<string, EventHandler *> handlers;
+    unordered_map<string, EventCallback *> handlers;
     set<int> socket_should_close;
+    unordered_map<string, Debug *> debugs;
 
     string CreateMapKey(int event_type, int fd) {
         return to_string(fd) + ":" + to_string(event_type);
@@ -41,14 +45,19 @@ public:
         original_error_happened.clear();
     }
 
-    void AddEvent(int fd, int event_type, EventHandler *handler);
+    void AddEvent(int fd, int event_type, EventCallback *handler);
 
     void RemoveEvent(int fd, int event_type);
 
     void Select();
 
     void CloseSocket(int fd) {
-        socket_should_close.insert(fd);
+        RemoveEvent(fd, EVENT_READABLE);
+        RemoveEvent(fd, EVENT_WRITEABLE);
+        FD_CLR(fd, &readable);//clear readable fd set
+        FD_CLR(fd, &writeable);//clear writeable fd set
+        FD_CLR(fd, &error_happened);//clear socket error
+        close(fd);
     }
 };
 

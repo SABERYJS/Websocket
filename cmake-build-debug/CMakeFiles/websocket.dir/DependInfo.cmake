@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/cygdrive/e/code/websocket/HttpResponse.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/HttpResponse.cpp.o"
   "/cygdrive/e/code/websocket/Server.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/Server.cpp.o"
   "/cygdrive/e/code/websocket/WebsocketProtocolParser.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o"
+  "/cygdrive/e/code/websocket/WebsocketServer.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/WebsocketServer.cpp.o"
   "/cygdrive/e/code/websocket/main.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

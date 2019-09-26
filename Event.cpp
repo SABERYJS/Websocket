@@ -3,9 +3,9 @@
 //
 
 #include "Event.h"
-#include "EventHandler.h"
+#include "EventCallback.h"
 
-void EventLoop::AddEvent(int fd, int event_type, EventHandler *handler) {
+void EventLoop::AddEvent(int fd, int event_type, EventCallback *handler) {
     handlers[CreateMapKey(event_type, fd)] = handler;
     if (event_type == EVENT_READABLE) {
         original_readable.push_back(fd);
@@ -58,18 +58,16 @@ void EventLoop::ResetInitListenFdSet(fd_set *set, int event_type) {
 }
 
 void EventLoop::Select() {
-    ReInitFdSet();
-    timeval val;
-    val.tv_usec = val.tv_sec = 0;
-    int i;
+    int i,ret;
     while (true) {
         ReInitFdSet();
         try_again:
-        if ((select(FD_SETSIZE, &readable, &writeable, &error_happened, &val)) < 0) {
+        if ((ret=select(FD_SETSIZE, &readable, &writeable, &error_happened, nullptr)) < 0) {
             if (errno == EINTR) {
                 goto try_again;
             } else {
-                throw SystemCallException((char *) "Select called Failed");
+                cout<<strerror(errno)<<endl;
+                throw SystemCallException(strerror(errno));
             }
         } else {
             for (i = 0; i < FD_SETSIZE; i++) {

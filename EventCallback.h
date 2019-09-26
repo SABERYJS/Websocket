@@ -2,13 +2,11 @@
 // Created by Administrator on 2019/9/24 0024.
 //
 
-#ifndef WEBSOCKET_EVENTHANDLER_H
-#define WEBSOCKET_EVENTHANDLER_H
+#ifndef WEBSOCKET_EVENTCALLBACK_H
+#define WEBSOCKET_EVENTCALLBACK_H
 
 #include "public.h"
-#include "Event.h"
 #include <set>
-
 using namespace std;
 
 #define EVENT_READABLE 1
@@ -16,11 +14,15 @@ using namespace std;
 #define EVENT_ERROR 3
 
 //event handler base class,all event handler must implement the interface
-class EventHandler {
-private:
+class EventCallback {
+protected:
     void *data;
 public:
-    explicit EventHandler(void *data) {
+    EventCallback() {
+        data = nullptr;
+    };
+
+    explicit EventCallback(void *data) {
         this->data = data;
     }
 
@@ -31,4 +33,4 @@ public:
     }
 };
 
-#endif //WEBSOCKET_EVENTHANDLER_H
+#endif //WEBSOCKET_EVENTCALLBACK_H

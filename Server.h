@@ -7,23 +7,26 @@
 
 #include "public.h"
 #include "SystemCallException.h"
-#include "EventHandler.h"
+#include "EventCallback.h"
 #include "Event.h"
 
-class Server {
-private:
+class Server : public EventCallback {
+protected:
     int port;//server port
     Socket_t sock;//server listen socket
     sockaddr_in addr;
     socklen_t sock_len;
     int back_log;
     timeval time_out;
-    EventLoop *loop;
-
+    EventLoop event_loop;//event system
+    Socket_t client_connected;
 
     void CreateSocket();
 
 public:
+
+    Server() = default;
+
     explicit Server(int port, uint32_t ad, int back_log) {
         this->port = port;
         addr.sin_family = AF_INET;
@@ -42,6 +45,7 @@ public:
 
     void Loop();
 
+    bool Handle(bool socket_should_close, void *event_loop) override;
 };
 
 #endif //WEBSOCKET_SERVER_H
