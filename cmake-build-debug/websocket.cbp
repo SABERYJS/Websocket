@@ -125,10 +125,19 @@
 		<Unit filename="/cygdrive/e/code/websocket/WebsocketServer.h">
 			<Option target="websocket"/>
 		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/base64.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/base64.h">
+			<Option target="websocket"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/main.cpp">
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/public.h">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/utils.cpp">
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/utils.h">

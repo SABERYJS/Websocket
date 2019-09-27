@@ -285,6 +285,33 @@ WebsocketServer.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketServer.cpp.s
 .PHONY : WebsocketServer.cpp.s
 
+base64.o: base64.cpp.o
+
+.PHONY : base64.o
+
+# target to build an object file
+base64.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/base64.cpp.o
+.PHONY : base64.cpp.o
+
+base64.i: base64.cpp.i
+
+.PHONY : base64.i
+
+# target to preprocess a source file
+base64.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/base64.cpp.i
+.PHONY : base64.cpp.i
+
+base64.s: base64.cpp.s
+
+.PHONY : base64.s
+
+# target to generate assembly for a file
+base64.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/base64.cpp.s
+.PHONY : base64.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -311,6 +338,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+utils.o: utils.cpp.o
+
+.PHONY : utils.o
+
+# target to build an object file
+utils.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/utils.cpp.o
+.PHONY : utils.cpp.o
+
+utils.i: utils.cpp.i
+
+.PHONY : utils.i
+
+# target to preprocess a source file
+utils.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/utils.cpp.i
+.PHONY : utils.cpp.i
+
+utils.s: utils.cpp.s
+
+.PHONY : utils.s
+
+# target to generate assembly for a file
+utils.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/utils.cpp.s
+.PHONY : utils.cpp.s
 
 # Help Target
 help:
@@ -339,9 +393,15 @@ help:
 	@echo "... WebsocketServer.o"
 	@echo "... WebsocketServer.i"
 	@echo "... WebsocketServer.s"
+	@echo "... base64.o"
+	@echo "... base64.i"
+	@echo "... base64.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... utils.o"
+	@echo "... utils.i"
+	@echo "... utils.s"
 .PHONY : help
 
 

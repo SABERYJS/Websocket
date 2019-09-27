@@ -21,6 +21,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <algorithm>
+#include <openssl/sha.h>
+#include "base64.h"
+#include "utils.h"
 
 using namespace std;
 

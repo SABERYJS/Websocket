@@ -20,6 +20,19 @@ protected:
     string header_origin;
     bool handshake_finished;//check if handshake is finished
     HttpResponse response;//used for  handshake with client
+    string guid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+    bool message_fragmented = false;//Check if message has been fragmented,because message is  too large
+    int64_t message_length;//pending  message size
+    bool message_length_calculated = false;
+    bool is_last_message = false;
+    ushort op_code;
+    bool is_mask;
+    ushort payload_length_type;
+    string mask_key;
+    bool base_parsed = false;
+    bool mask_key_parsed = false;
+    int last_parse_index = 0;
+    string last_message;
 
     void ProcessHttpHeader(string &name, string &value) override;
 
@@ -28,6 +41,10 @@ protected:
     void ShakeHandWithClient(EventLoop *eventLoop);
 
     bool CheckHttpProtocol();
+
+    string CalculateKey();
+
+    bool ProcessClientMessage();
 
 public:
     explicit WebsocketProtocolParser(int socket) : HttpProtocolParser(socket) {

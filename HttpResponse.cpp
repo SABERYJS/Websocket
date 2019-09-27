@@ -5,7 +5,7 @@
 #include "HttpResponse.h"
 
 
-void HttpResponse::AddHeader(string &name, string &value, bool is_last = false) {
+void HttpResponse::AddHeader(string name, string value, bool is_last = false) {
     internal_buffer.append(name + ":" + value + "\r\n");
     if (is_last) {
         //add header last time
@@ -34,7 +34,7 @@ bool HttpResponse::Handle(bool socket_should_close, void *event_loop) {
         }
     } else {
         if (close_after_write_finished) {
-            close(sock);
+            loop->CloseSocket(sock);
         }
         return true;
     }

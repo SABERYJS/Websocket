@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/websocket.dir/Server.cpp.o"
   "CMakeFiles/websocket.dir/Event.cpp.o"
   "CMakeFiles/websocket.dir/WebsocketServer.cpp.o"
+  "CMakeFiles/websocket.dir/base64.cpp.o"
+  "CMakeFiles/websocket.dir/utils.cpp.o"
   "websocket.pdb"
   "websocket.exe"
   "libwebsocket.dll.a"

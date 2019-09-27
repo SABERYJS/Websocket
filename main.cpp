@@ -7,8 +7,6 @@
 #include "WebsocketServer.h"
 
 int main() {
-    /* auto *server = new Server(80, INADDR_ANY, 10);
-     server->Loop();*/
-    auto server = new WebsocketServer(80, INADDR_ANY, 10);
-    server->Loop();
+     auto server = new WebsocketServer(80, INADDR_ANY, 10);
+     server->Loop();
 }

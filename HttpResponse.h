@@ -40,7 +40,7 @@ public:
         InitStatus();
     }
 
-    void AddHeader(string &name, string &value, bool is_last);
+    void AddHeader(string name, string value, bool is_last);
 
     void AddStatusLine(string protocol, int code, string description, bool is_last = false);
 
@@ -52,6 +52,10 @@ public:
 
     void CloseSocketAfterWriteFinished() {
         close_after_write_finished = true;
+    }
+
+    void HeaderSendFinished() {
+        internal_buffer.append("\r\n");
     }
 };
 

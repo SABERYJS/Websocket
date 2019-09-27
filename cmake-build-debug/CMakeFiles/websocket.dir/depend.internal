@@ -7,12 +7,16 @@ CMakeFiles/websocket.dir/Event.cpp.o
  /cygdrive/e/code/websocket/Event.h
  /cygdrive/e/code/websocket/EventCallback.h
  /cygdrive/e/code/websocket/SystemCallException.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o
  /cygdrive/e/code/websocket/HttpProtocolParser.cpp
  /cygdrive/e/code/websocket/HttpProtocolParser.h
  /cygdrive/e/code/websocket/SystemCallException.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
 CMakeFiles/websocket.dir/HttpResponse.cpp.o
  /cygdrive/e/code/websocket/Debug.h
  /cygdrive/e/code/websocket/Event.h
@@ -20,7 +24,9 @@ CMakeFiles/websocket.dir/HttpResponse.cpp.o
  /cygdrive/e/code/websocket/HttpResponse.cpp
  /cygdrive/e/code/websocket/HttpResponse.h
  /cygdrive/e/code/websocket/SystemCallException.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
 CMakeFiles/websocket.dir/Server.cpp.o
  /cygdrive/e/code/websocket/Debug.h
  /cygdrive/e/code/websocket/Event.h
@@ -28,7 +34,9 @@ CMakeFiles/websocket.dir/Server.cpp.o
  /cygdrive/e/code/websocket/Server.cpp
  /cygdrive/e/code/websocket/Server.h
  /cygdrive/e/code/websocket/SystemCallException.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o
  /cygdrive/e/code/websocket/Debug.h
  /cygdrive/e/code/websocket/Event.h
@@ -38,7 +46,9 @@ CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o
  /cygdrive/e/code/websocket/SystemCallException.h
  /cygdrive/e/code/websocket/WebsocketProtocolParser.cpp
  /cygdrive/e/code/websocket/WebsocketProtocolParser.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o
  /cygdrive/e/code/websocket/Debug.h
  /cygdrive/e/code/websocket/Event.h
@@ -50,7 +60,12 @@ CMakeFiles/websocket.dir/WebsocketServer.cpp.o
  /cygdrive/e/code/websocket/WebsocketProtocolParser.h
  /cygdrive/e/code/websocket/WebsocketServer.cpp
  /cygdrive/e/code/websocket/WebsocketServer.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
+CMakeFiles/websocket.dir/base64.cpp.o
+ /cygdrive/e/code/websocket/base64.cpp
+ /cygdrive/e/code/websocket/base64.h
 CMakeFiles/websocket.dir/main.cpp.o
  /cygdrive/e/code/websocket/Debug.h
  /cygdrive/e/code/websocket/Event.h
@@ -61,5 +76,12 @@ CMakeFiles/websocket.dir/main.cpp.o
  /cygdrive/e/code/websocket/SystemCallException.h
  /cygdrive/e/code/websocket/WebsocketProtocolParser.h
  /cygdrive/e/code/websocket/WebsocketServer.h
+ /cygdrive/e/code/websocket/base64.h
  /cygdrive/e/code/websocket/main.cpp
  /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.h
+CMakeFiles/websocket.dir/utils.cpp.o
+ /cygdrive/e/code/websocket/base64.h
+ /cygdrive/e/code/websocket/public.h
+ /cygdrive/e/code/websocket/utils.cpp
+ /cygdrive/e/code/websocket/utils.h
