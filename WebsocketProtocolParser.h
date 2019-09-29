@@ -8,6 +8,8 @@
 #include "HttpProtocolParser.h"
 #include "EventCallback.h"
 #include "HttpResponse.h"
+#include "MessageHandler.h"
+#include "WebsocketResponse.h"
 
 class WebsocketProtocolParser : public HttpProtocolParser, public EventCallback {
 protected:
@@ -33,6 +35,10 @@ protected:
     bool mask_key_parsed = false;
     int last_parse_index = 0;
     string last_message;
+    MessageHandler *message_handler;
+    WebsocketResponse websocket_response;
+    EventLoop *event_loop;
+    bool is_handler_switched = false;
 
     void ProcessHttpHeader(string &name, string &value) override;
 
@@ -46,10 +52,16 @@ protected:
 
     bool ProcessClientMessage();
 
+    void ProxyMessage();
+
+    void SendMessageToClient(string &resp);
+
 public:
-    explicit WebsocketProtocolParser(int socket) : HttpProtocolParser(socket) {
+    explicit WebsocketProtocolParser(int socket, MessageHandler *handler) : HttpProtocolParser(socket) {
         handshake_finished = false;
+        message_handler = handler;
         response.BindSocket(socket);
+        websocket_response.BindSocket(socket);
     }
 };
 

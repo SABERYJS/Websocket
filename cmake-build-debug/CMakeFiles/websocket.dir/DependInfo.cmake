@@ -4,11 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/cygdrive/e/code/websocket/EchoServer.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/EchoServer.cpp.o"
   "/cygdrive/e/code/websocket/Event.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/Event.cpp.o"
   "/cygdrive/e/code/websocket/HttpProtocolParser.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o"
   "/cygdrive/e/code/websocket/HttpResponse.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/HttpResponse.cpp.o"
+  "/cygdrive/e/code/websocket/MessageHandler.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/MessageHandler.cpp.o"
   "/cygdrive/e/code/websocket/Server.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/Server.cpp.o"
   "/cygdrive/e/code/websocket/WebsocketProtocolParser.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o"
+  "/cygdrive/e/code/websocket/WebsocketResponse.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/WebsocketResponse.cpp.o"
   "/cygdrive/e/code/websocket/WebsocketServer.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/WebsocketServer.cpp.o"
   "/cygdrive/e/code/websocket/base64.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/base64.cpp.o"
   "/cygdrive/e/code/websocket/main.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/main.cpp.o"

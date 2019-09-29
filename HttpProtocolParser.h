@@ -7,6 +7,7 @@
 
 #include "public.h"
 #include "SystemCallException.h"
+#include "Event.h"
 
 class HttpProtocolParser {
 protected:
@@ -21,6 +22,7 @@ protected:
     string http_version;//request http version
     int next_search_pos;
     bool socket_closed;
+    EventLoop *event_loop;
 
     void InitStatus() {
         is_parse_finished = false;
@@ -56,6 +58,10 @@ public:
     }
 
     void Parse();
+
+    void BindEventSystem(EventLoop *eventLoop) {
+        event_loop = eventLoop;
+    }
 };
 
 #endif //WEBSOCKET_HTTPPROTOCOLPARSER_H

@@ -10,11 +10,15 @@
 public.h
 /cygdrive/e/code/websocket/public.h
 
-/cygdrive/e/code/websocket/Event.cpp
-Event.h
-/cygdrive/e/code/websocket/Event.h
-EventCallback.h
-/cygdrive/e/code/websocket/EventCallback.h
+/cygdrive/e/code/websocket/EchoServer.cpp
+EchoServer.h
+/cygdrive/e/code/websocket/EchoServer.h
+
+/cygdrive/e/code/websocket/EchoServer.h
+public.h
+/cygdrive/e/code/websocket/public.h
+WebsocketServer.h
+/cygdrive/e/code/websocket/WebsocketServer.h
 
 /cygdrive/e/code/websocket/Event.h
 public.h
@@ -45,10 +49,8 @@ public.h
 /cygdrive/e/code/websocket/public.h
 SystemCallException.h
 /cygdrive/e/code/websocket/SystemCallException.h
-
-/cygdrive/e/code/websocket/HttpResponse.cpp
-HttpResponse.h
-/cygdrive/e/code/websocket/HttpResponse.h
+Event.h
+/cygdrive/e/code/websocket/Event.h
 
 /cygdrive/e/code/websocket/HttpResponse.h
 public.h
@@ -58,11 +60,9 @@ EventCallback.h
 Event.h
 /cygdrive/e/code/websocket/Event.h
 
-/cygdrive/e/code/websocket/Server.cpp
-Server.h
-/cygdrive/e/code/websocket/Server.h
-poll.h
--
+/cygdrive/e/code/websocket/MessageHandler.h
+public.h
+/cygdrive/e/code/websocket/public.h
 
 /cygdrive/e/code/websocket/Server.h
 public.h
@@ -89,6 +89,18 @@ EventCallback.h
 /cygdrive/e/code/websocket/EventCallback.h
 HttpResponse.h
 /cygdrive/e/code/websocket/HttpResponse.h
+MessageHandler.h
+/cygdrive/e/code/websocket/MessageHandler.h
+WebsocketResponse.h
+/cygdrive/e/code/websocket/WebsocketResponse.h
+
+/cygdrive/e/code/websocket/WebsocketResponse.h
+WebsocketResponse.h
+/cygdrive/e/code/websocket/WebsocketResponse.h
+EventCallback.h
+/cygdrive/e/code/websocket/EventCallback.h
+Event.h
+/cygdrive/e/code/websocket/Event.h
 
 /cygdrive/e/code/websocket/WebsocketServer.cpp
 WebsocketServer.h
@@ -101,6 +113,8 @@ Server.h
 /cygdrive/e/code/websocket/Server.h
 WebsocketProtocolParser.h
 /cygdrive/e/code/websocket/WebsocketProtocolParser.h
+MessageHandler.h
+/cygdrive/e/code/websocket/MessageHandler.h
 
 /cygdrive/e/code/websocket/base64.h
 string
@@ -113,6 +127,8 @@ Server.h
 /cygdrive/e/code/websocket/Server.h
 WebsocketServer.h
 /cygdrive/e/code/websocket/WebsocketServer.h
+EchoServer.h
+/cygdrive/e/code/websocket/EchoServer.h
 
 /cygdrive/e/code/websocket/public.h
 iostream
@@ -151,10 +167,6 @@ openssl/sha.h
 -
 base64.h
 /cygdrive/e/code/websocket/base64.h
-utils.h
-/cygdrive/e/code/websocket/utils.h
-
-/cygdrive/e/code/websocket/utils.cpp
 utils.h
 /cygdrive/e/code/websocket/utils.h
 

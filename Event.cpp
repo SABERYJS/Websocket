@@ -27,6 +27,10 @@ void EventLoop::RemoveEvent(int fd, int event_type) {
     }
 }
 
+void EventLoop::ModifyEvent(int fd, int event_type, EventCallback *handler) {
+    handlers[CreateMapKey(event_type, fd)] = handler;
+}
+
 void EventLoop::ResetFdSet() {
     FD_ZERO(&readable);
     FD_ZERO(&writeable);
@@ -58,15 +62,15 @@ void EventLoop::ResetInitListenFdSet(fd_set *set, int event_type) {
 }
 
 void EventLoop::Select() {
-    int i,ret;
+    int i, ret;
     while (true) {
         ReInitFdSet();
         try_again:
-        if ((ret=select(FD_SETSIZE, &readable, &writeable, &error_happened, nullptr)) < 0) {
+        if ((ret = select(FD_SETSIZE, &readable, &writeable, &error_happened, nullptr)) < 0) {
             if (errno == EINTR) {
                 goto try_again;
             } else {
-                cout<<strerror(errno)<<endl;
+                cout << strerror(errno) << endl;
                 throw SystemCallException(strerror(errno));
             }
         } else {

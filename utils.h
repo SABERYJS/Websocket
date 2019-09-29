@@ -11,4 +11,6 @@ unsigned long long ntohll(unsigned long long val);
 
 unsigned long long htonll(unsigned long long val);
 
+void gen_random(char *s, const int len);
+
 #endif //WEBSOCKET_UTILS_H

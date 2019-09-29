@@ -49,6 +49,8 @@ public:
 
     void RemoveEvent(int fd, int event_type);
 
+    void ModifyEvent(int fd, int event_type, EventCallback *handler);
+
     void Select();
 
     void CloseSocket(int fd) {

@@ -25,6 +25,9 @@ void WebsocketProtocolParser::ProcessHttpHeader(string &name, string &value) {
 
 
 bool WebsocketProtocolParser::Handle(bool socket_should_close, void *event_loop) {
+    if (this->event_loop == nullptr) {
+        this->event_loop = (EventLoop *) event_loop;
+    }
     if (!handshake_finished) {
         //handshake not finished
         if (!is_parse_finished) {
@@ -60,6 +63,11 @@ bool WebsocketProtocolParser::Handle(bool socket_should_close, void *event_loop)
      +---------------------------------------------------------------+
  * **/
 bool WebsocketProtocolParser::ProcessClientMessage() {
+    ReadFromSocket();
+    if (socket_closed) {
+        event_loop->CloseSocket(socket);
+        return false;
+    }
     //firstly check if we received  full message
     size_t data_len = internal_buffer.length();
     if (!message_length_calculated) {
@@ -123,10 +131,11 @@ bool WebsocketProtocolParser::ProcessClientMessage() {
     }
     if (mask_key_parsed && (data_len = internal_buffer.length()) > 0) {
         //metadata parse finished,start parse content;
-        int i = 0, c;
-        while (i < (data_len - 1)) {
+        int i = 0;
+        char c;
+        while (i <= (data_len - 1)) {
             c = internal_buffer.at(i);
-            last_message.append(1, (char) (c ^ (mask_key[last_parse_index / 4])));
+            last_message.append(1, (char) (c ^ (mask_key[last_parse_index % 4])));
             i++;
             ++last_parse_index;
         }
@@ -135,9 +144,27 @@ bool WebsocketProtocolParser::ProcessClientMessage() {
             message_length_calculated = false;
             mask_key_parsed = false;
             base_parsed = false;
-            cout << last_message << endl;
+            last_parse_index = 0;
+            if (is_last_message) {
+                //message receive finished
+                cout << last_message << endl;
+                if (!is_handler_switched) {
+                    event_loop->ModifyEvent(socket, EVENT_WRITEABLE, &websocket_response);
+                    is_handler_switched = true;
+                }
+                ProxyMessage();
+            }
         }
     }
+}
+
+void WebsocketProtocolParser::ProxyMessage() {
+    string res = message_handler->ProcessMessage(last_message);
+    SendMessageToClient(res);
+}
+
+void WebsocketProtocolParser::SendMessageToClient(string &resp) {
+    websocket_response.Write(1, resp, true);
 }
 
 void WebsocketProtocolParser::ShakeHandWithClient(EventLoop *eventLoop) {

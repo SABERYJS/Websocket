@@ -7,6 +7,10 @@
 
 void HttpProtocolParser::Parse() {
     ReadFromSocket();//read from socket
+    if (socket_closed) {
+        event_loop->CloseSocket(socket);
+        return;
+    }
     while (true) {
         if (!is_parse_finished) {
             int pos = internal_buffer.find_first_of('\r', next_search_pos);

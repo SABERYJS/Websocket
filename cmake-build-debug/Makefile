@@ -123,6 +123,33 @@ websocket/fast:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/build
 .PHONY : websocket/fast
 
+EchoServer.o: EchoServer.cpp.o
+
+.PHONY : EchoServer.o
+
+# target to build an object file
+EchoServer.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/EchoServer.cpp.o
+.PHONY : EchoServer.cpp.o
+
+EchoServer.i: EchoServer.cpp.i
+
+.PHONY : EchoServer.i
+
+# target to preprocess a source file
+EchoServer.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/EchoServer.cpp.i
+.PHONY : EchoServer.cpp.i
+
+EchoServer.s: EchoServer.cpp.s
+
+.PHONY : EchoServer.s
+
+# target to generate assembly for a file
+EchoServer.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/EchoServer.cpp.s
+.PHONY : EchoServer.cpp.s
+
 Event.o: Event.cpp.o
 
 .PHONY : Event.o
@@ -204,6 +231,33 @@ HttpResponse.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/HttpResponse.cpp.s
 .PHONY : HttpResponse.cpp.s
 
+MessageHandler.o: MessageHandler.cpp.o
+
+.PHONY : MessageHandler.o
+
+# target to build an object file
+MessageHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/MessageHandler.cpp.o
+.PHONY : MessageHandler.cpp.o
+
+MessageHandler.i: MessageHandler.cpp.i
+
+.PHONY : MessageHandler.i
+
+# target to preprocess a source file
+MessageHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/MessageHandler.cpp.i
+.PHONY : MessageHandler.cpp.i
+
+MessageHandler.s: MessageHandler.cpp.s
+
+.PHONY : MessageHandler.s
+
+# target to generate assembly for a file
+MessageHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/MessageHandler.cpp.s
+.PHONY : MessageHandler.cpp.s
+
 Server.o: Server.cpp.o
 
 .PHONY : Server.o
@@ -257,6 +311,33 @@ WebsocketProtocolParser.s: WebsocketProtocolParser.cpp.s
 WebsocketProtocolParser.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.s
 .PHONY : WebsocketProtocolParser.cpp.s
+
+WebsocketResponse.o: WebsocketResponse.cpp.o
+
+.PHONY : WebsocketResponse.o
+
+# target to build an object file
+WebsocketResponse.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketResponse.cpp.o
+.PHONY : WebsocketResponse.cpp.o
+
+WebsocketResponse.i: WebsocketResponse.cpp.i
+
+.PHONY : WebsocketResponse.i
+
+# target to preprocess a source file
+WebsocketResponse.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketResponse.cpp.i
+.PHONY : WebsocketResponse.cpp.i
+
+WebsocketResponse.s: WebsocketResponse.cpp.s
+
+.PHONY : WebsocketResponse.s
+
+# target to generate assembly for a file
+WebsocketResponse.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/WebsocketResponse.cpp.s
+.PHONY : WebsocketResponse.cpp.s
 
 WebsocketServer.o: WebsocketServer.cpp.o
 
@@ -375,6 +456,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... websocket"
 	@echo "... edit_cache"
+	@echo "... EchoServer.o"
+	@echo "... EchoServer.i"
+	@echo "... EchoServer.s"
 	@echo "... Event.o"
 	@echo "... Event.i"
 	@echo "... Event.s"
@@ -384,12 +468,18 @@ help:
 	@echo "... HttpResponse.o"
 	@echo "... HttpResponse.i"
 	@echo "... HttpResponse.s"
+	@echo "... MessageHandler.o"
+	@echo "... MessageHandler.i"
+	@echo "... MessageHandler.s"
 	@echo "... Server.o"
 	@echo "... Server.i"
 	@echo "... Server.s"
 	@echo "... WebsocketProtocolParser.o"
 	@echo "... WebsocketProtocolParser.i"
 	@echo "... WebsocketProtocolParser.s"
+	@echo "... WebsocketResponse.o"
+	@echo "... WebsocketResponse.i"
+	@echo "... WebsocketResponse.s"
 	@echo "... WebsocketServer.o"
 	@echo "... WebsocketServer.i"
 	@echo "... WebsocketServer.s"

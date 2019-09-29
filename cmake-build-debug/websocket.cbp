@@ -83,6 +83,12 @@
 		<Unit filename="/cygdrive/e/code/websocket/Debug.h">
 			<Option target="websocket"/>
 		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/EchoServer.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/EchoServer.h">
+			<Option target="websocket"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/Event.cpp">
 			<Option target="websocket"/>
 		</Unit>
@@ -104,6 +110,12 @@
 		<Unit filename="/cygdrive/e/code/websocket/HttpResponse.h">
 			<Option target="websocket"/>
 		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/MessageHandler.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/MessageHandler.h">
+			<Option target="websocket"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/Server.cpp">
 			<Option target="websocket"/>
 		</Unit>
@@ -117,6 +129,12 @@
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/WebsocketProtocolParser.h">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/WebsocketResponse.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/WebsocketResponse.h">
 			<Option target="websocket"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/WebsocketServer.cpp">

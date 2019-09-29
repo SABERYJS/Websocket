@@ -174,6 +174,45 @@ CMakeFiles/websocket.dir/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/websocket.dir/utils.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/e/code/websocket/utils.cpp -o CMakeFiles/websocket.dir/utils.cpp.s
 
+CMakeFiles/websocket.dir/EchoServer.cpp.o: CMakeFiles/websocket.dir/flags.make
+CMakeFiles/websocket.dir/EchoServer.cpp.o: ../EchoServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/websocket.dir/EchoServer.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/websocket.dir/EchoServer.cpp.o -c /cygdrive/e/code/websocket/EchoServer.cpp
+
+CMakeFiles/websocket.dir/EchoServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/websocket.dir/EchoServer.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/e/code/websocket/EchoServer.cpp > CMakeFiles/websocket.dir/EchoServer.cpp.i
+
+CMakeFiles/websocket.dir/EchoServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/websocket.dir/EchoServer.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/e/code/websocket/EchoServer.cpp -o CMakeFiles/websocket.dir/EchoServer.cpp.s
+
+CMakeFiles/websocket.dir/MessageHandler.cpp.o: CMakeFiles/websocket.dir/flags.make
+CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../MessageHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/websocket.dir/MessageHandler.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/websocket.dir/MessageHandler.cpp.o -c /cygdrive/e/code/websocket/MessageHandler.cpp
+
+CMakeFiles/websocket.dir/MessageHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/websocket.dir/MessageHandler.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/e/code/websocket/MessageHandler.cpp > CMakeFiles/websocket.dir/MessageHandler.cpp.i
+
+CMakeFiles/websocket.dir/MessageHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/websocket.dir/MessageHandler.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/e/code/websocket/MessageHandler.cpp -o CMakeFiles/websocket.dir/MessageHandler.cpp.s
+
+CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: CMakeFiles/websocket.dir/flags.make
+CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../WebsocketResponse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/websocket.dir/WebsocketResponse.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/websocket.dir/WebsocketResponse.cpp.o -c /cygdrive/e/code/websocket/WebsocketResponse.cpp
+
+CMakeFiles/websocket.dir/WebsocketResponse.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/websocket.dir/WebsocketResponse.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/e/code/websocket/WebsocketResponse.cpp > CMakeFiles/websocket.dir/WebsocketResponse.cpp.i
+
+CMakeFiles/websocket.dir/WebsocketResponse.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/websocket.dir/WebsocketResponse.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/e/code/websocket/WebsocketResponse.cpp -o CMakeFiles/websocket.dir/WebsocketResponse.cpp.s
+
 # Object files for target websocket
 websocket_OBJECTS = \
 "CMakeFiles/websocket.dir/main.cpp.o" \
@@ -184,7 +223,10 @@ websocket_OBJECTS = \
 "CMakeFiles/websocket.dir/Event.cpp.o" \
 "CMakeFiles/websocket.dir/WebsocketServer.cpp.o" \
 "CMakeFiles/websocket.dir/base64.cpp.o" \
-"CMakeFiles/websocket.dir/utils.cpp.o"
+"CMakeFiles/websocket.dir/utils.cpp.o" \
+"CMakeFiles/websocket.dir/EchoServer.cpp.o" \
+"CMakeFiles/websocket.dir/MessageHandler.cpp.o" \
+"CMakeFiles/websocket.dir/WebsocketResponse.cpp.o"
 
 # External object files for target websocket
 websocket_EXTERNAL_OBJECTS =
@@ -198,9 +240,12 @@ websocket.exe: CMakeFiles/websocket.dir/Event.cpp.o
 websocket.exe: CMakeFiles/websocket.dir/WebsocketServer.cpp.o
 websocket.exe: CMakeFiles/websocket.dir/base64.cpp.o
 websocket.exe: CMakeFiles/websocket.dir/utils.cpp.o
+websocket.exe: CMakeFiles/websocket.dir/EchoServer.cpp.o
+websocket.exe: CMakeFiles/websocket.dir/MessageHandler.cpp.o
+websocket.exe: CMakeFiles/websocket.dir/WebsocketResponse.cpp.o
 websocket.exe: CMakeFiles/websocket.dir/build.make
 websocket.exe: CMakeFiles/websocket.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable websocket.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable websocket.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/websocket.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
