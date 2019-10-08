@@ -123,6 +123,33 @@ websocket/fast:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/build
 .PHONY : websocket/fast
 
+Config.o: Config.cpp.o
+
+.PHONY : Config.o
+
+# target to build an object file
+Config.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Config.cpp.o
+.PHONY : Config.cpp.o
+
+Config.i: Config.cpp.i
+
+.PHONY : Config.i
+
+# target to preprocess a source file
+Config.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Config.cpp.i
+.PHONY : Config.cpp.i
+
+Config.s: Config.cpp.s
+
+.PHONY : Config.s
+
+# target to generate assembly for a file
+Config.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Config.cpp.s
+.PHONY : Config.cpp.s
+
 EchoServer.o: EchoServer.cpp.o
 
 .PHONY : EchoServer.o
@@ -456,6 +483,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... websocket"
 	@echo "... edit_cache"
+	@echo "... Config.o"
+	@echo "... Config.i"
+	@echo "... Config.s"
 	@echo "... EchoServer.o"
 	@echo "... EchoServer.i"
 	@echo "... EchoServer.s"

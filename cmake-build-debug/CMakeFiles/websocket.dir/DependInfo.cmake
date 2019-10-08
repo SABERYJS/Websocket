@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/cygdrive/e/code/websocket/Config.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/Config.cpp.o"
   "/cygdrive/e/code/websocket/EchoServer.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/EchoServer.cpp.o"
   "/cygdrive/e/code/websocket/Event.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/Event.cpp.o"
   "/cygdrive/e/code/websocket/HttpProtocolParser.cpp" "/cygdrive/e/code/websocket/cmake-build-debug/CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o"

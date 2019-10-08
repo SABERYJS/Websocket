@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/websocket.dir/EchoServer.cpp.o"
   "CMakeFiles/websocket.dir/MessageHandler.cpp.o"
   "CMakeFiles/websocket.dir/WebsocketResponse.cpp.o"
+  "CMakeFiles/websocket.dir/Config.cpp.o"
   "websocket.pdb"
   "websocket.exe"
   "libwebsocket.dll.a"

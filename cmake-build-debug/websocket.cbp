@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/e/code/websocket/Config.cpp">
+			<Option target="websocket"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/code/websocket/Config.h">
+			<Option target="websocket"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/code/websocket/Debug.h">
 			<Option target="websocket"/>
 		</Unit>
