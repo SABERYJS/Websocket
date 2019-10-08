@@ -9,9 +9,10 @@
 
 class Config {
 private:
-    int port;
-    int process_num;
-    bool run_as_daemon;
+    int port = 80;
+    int process_num = 1;
+    bool run_as_daemon = false;
+    bool debug_open = true;
     string config_filename;
     unordered_map<string, string> configs;
 
@@ -24,6 +25,23 @@ public:
     void Parse(string file = "");
 
     void Print();
+
+    inline int GetPort() {
+        return port;
+    }
+
+    inline int GetProcessNum() {
+        return process_num;
+    }
+
+    inline bool CheckRunAsDaemon() {
+        return run_as_daemon;
+    }
+
+    inline bool CheckDebugOpen() {
+        return debug_open;
+    }
+
 };
 
 #endif //WEBSOCKET_CONFIG_H
