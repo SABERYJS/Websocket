@@ -25,6 +25,9 @@
 #include "base64.h"
 #include "utils.h"
 #include "net_utils.h"
+#include "Daemon.h"
+#include <signal.h>
+#include <wait.h>
 
 using namespace std;
 

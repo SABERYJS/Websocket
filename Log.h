@@ -48,7 +48,7 @@ private:
         if (filename == nullptr) {
             is_standard = true;
         } else {
-            stream.open(filename, ios::out);
+            stream.open(filename, ios::out | ios::app);//append content to file
             if (!stream.is_open()) {
                 throw std::runtime_error(CreateMessage({"Can not open file ", filename}));
             }
