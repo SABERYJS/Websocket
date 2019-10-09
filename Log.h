@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define WEBSOCKET_LOG_H
 
 #include "public.h"
+#include <fstream>
+#include <sstream>
 
 class Log {
 private:

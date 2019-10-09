@@ -6,6 +6,7 @@
 #include <fstream>
 
 using namespace std;
+extern Config global_config;
 
 void Config::Parse(string file) {
     if (file.length() <= 0 && config_filename.length() <= 0) {
@@ -79,7 +80,7 @@ void Config::Parse(string file) {
 #endif
         } else if ((*iterator).first == "run_as_daemon") {
 #ifdef linux
-            if ((*iterator).second != "true" && (*iterator).second != "false") {
+            if ((*iterator).second.compare(0,4,"true") !=0 && (*iterator).second.compare(0,4,"false") !=0) {
                 throw "Config run_as_daemon Only Support true or false";
             }
 
@@ -89,10 +90,15 @@ void Config::Parse(string file) {
 #endif
 
         } else if ((*iterator).first == "debug_open") {
-            if ((*iterator).second != "true" && (*iterator).second != "false") {
+            if ((*iterator).second.compare(0, 4, "true") != 0 && (*iterator).second.compare(0, 4, "false") != 0) {
                 throw "Config debug_open Only Support true or false";
             }
-            debug_open = (*iterator).second == "true";
+            debug_open = (*iterator).second.compare(0, 4, "true") == 0;
+        } else if ((*iterator).first == "log_file_path") {
+            log_file_path = (*iterator).second;
+        }
+        if (log_file_path.length() <= 0) {
+            throw "Log File Not Configured";
         }
         ++iterator;
     }

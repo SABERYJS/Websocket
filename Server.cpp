@@ -7,6 +7,8 @@
 
 void Server::CreateSocket() {
     sock = socket(AF_INET, SOCK_STREAM, 0);
+    SetSocketNonBlock(sock);
+    SetSocketReuseAddr(sock);
     if (sock < 0) {
         throw SystemCallException((char *) "Create Socket failed");
     }
@@ -29,6 +31,9 @@ void Server::Loop() {
     CreateSocket();
     Bind();
     Listen();
+}
+
+void Server::WaitClient() {
     event_loop.AddEvent(sock, EVENT_READABLE, this);
     event_loop.Select();
 }

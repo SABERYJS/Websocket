@@ -13,6 +13,8 @@ private:
     int process_num = 1;
     bool run_as_daemon = false;
     bool debug_open = true;
+    string log_file_path;
+
     string config_filename;
     unordered_map<string, string> configs;
 
@@ -40,6 +42,10 @@ public:
 
     inline bool CheckDebugOpen() {
         return debug_open;
+    }
+
+    inline string GetLogPath() {
+        return log_file_path;
     }
 
 };

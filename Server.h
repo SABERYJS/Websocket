@@ -45,6 +45,8 @@ public:
 
     void Loop();
 
+    void WaitClient();
+
     bool Handle(bool socket_should_close, void *event_loop) override;
 };
 

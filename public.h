@@ -24,6 +24,7 @@
 #include <openssl/sha.h>
 #include "base64.h"
 #include "utils.h"
+#include "net_utils.h"
 
 using namespace std;
 

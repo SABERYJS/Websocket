@@ -7,8 +7,10 @@
 #include "WebsocketServer.h"
 #include "EchoServer.h"
 #include "Config.h"
+#include "Log.h"
 
 Config global_config;
+Log global_log;
 
 int main(int argc, char *argv[]) {
     int i = 0;
@@ -24,10 +26,17 @@ int main(int argc, char *argv[]) {
     if (config_file_specified) {
         try {
             global_config.Parse(config_file);
-            auto server = new EchoServer(80, INADDR_ANY, 10);
+            global_log.Open(global_config.GetLogPath().c_str());
+            auto server = new EchoServer(global_config.GetPort(), INADDR_ANY, 10);
             server->Loop();
         } catch (const char *error) {
             cout << error << endl;
+            exit(1);
+        } catch (std::runtime_error error) {
+            cout << error.what() << endl;
+            exit(1);
+        } catch (SystemCallException &exception) {
+            cout << exception.what() << endl;
             exit(1);
         }
 
