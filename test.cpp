@@ -6,6 +6,8 @@
 #include "public.h"
 
 int main() {
-    string str1("true");
-    cout << (str1 == "true") << endl;
+    void *data;
+    int *p;
+    cout << sizeof(data) << endl;
+    cout << sizeof(p) << endl;
 }

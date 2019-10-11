@@ -5,9 +5,9 @@
 #ifndef WEBSOCKET_DAEMON_H
 #define WEBSOCKET_DAEMON_H
 
-#include "public.h"
 #include "Log.h"
 
+using namespace std;
 extern Log global_log;
 
 int RunAsDaemon();

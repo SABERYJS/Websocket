@@ -8,7 +8,13 @@
 #include "EchoServer.h"
 #include "Config.h"
 #include "Log.h"
+#include "Daemon.h"
 
+#define  PIPE_BLOCK_SIZE 1024
+#define  APP_ERROR_EXIT_CODE -1
+#define  APP_NORMAL_EXIT_CODE 0
+
+#define CloseProcess(code)  exit(code)
 //following is global variables
 Config global_config;
 Log global_log;
@@ -33,17 +39,19 @@ pid_t parent_pid;
 pid_t self_pid;
 bool scheduled_close_server = false;
 bool server_should_restart = false;
-bool server_read_config_again = false;
+bool has_notify_child_process_close = false;
+int self_related_pipes[2];//current process related pipe
+char block[PIPE_BLOCK_SIZE] = {0};//pipe read buffer
+int last_block_write_pos = 0;//position for writing next time
+int response_count_from_client = 0;//used for close or restart server
+EventLoop global_event_loop; //global event system
+
 
 /**
  * dispatch process according to config file
  * **/
 void DispatchProcess();
 
-/**
- * kill all child process
- * **/
-void KillAllProcess();
 
 /**
  * register signal handlers
@@ -83,12 +91,66 @@ void ServerRestart();
 /**
  * restart child process
  * **/
-void RestartChildProcess(pid_t child_pid);
+void RestartChildProcess(pid_t child_pid = 0);
 
 /**
  * close server
  * **/
 void CloseServer();
+
+void NotifyChildProcessClose();
+
+inline bool AllChildProcessClosed() {
+    return child_process.size() == response_count_from_client;
+}
+
+inline bool NewChildProcessClosed() {
+    ++response_count_from_client;
+}
+
+inline void SetChildProcessStatus(pid_t pid) {
+    auto iterator = child_process.begin();
+    while (iterator != child_process.end()) {
+        if ((*iterator)->pid_no == pid) {
+            (*iterator)->ready = false;
+            break;
+        }
+        ++iterator;
+    }
+}
+
+struct : public EventCallback {
+    bool Handle(bool socket_should_close, void *event_loop) override {
+        int ret;
+        Package *pkg = nullptr;
+        while (true) {
+            try_again:
+            if ((ret = read(self_related_pipes[1], block, (PIPE_BLOCK_SIZE - last_block_write_pos))) < 0) {
+                if (errno == EINTR) {
+                    goto try_again;
+                } else {
+                    //quit directly
+                    global_log.Info({"Child Process ", to_string(self_pid).c_str(), " quit unusual"});
+                    CloseProcess(APP_ERROR_EXIT_CODE);
+                }
+            } else {
+                last_block_write_pos += ret;
+                //no enough data
+                if (last_block_write_pos < sizeof(Package)) {
+                    return true;
+                } else {
+                    pkg = (Package *) block;
+                    if (pkg->type == 1) {
+                        CloseProcess(APP_NORMAL_EXIT_CODE);
+                    } else {
+                        //do nothing now,reserved for future
+                    }
+                }
+            }
+        }
+    }
+} child_pipe_event_handler;
+
 
 int main(int argc, char *argv[]) {
     int i = 0;
@@ -132,35 +194,9 @@ void DispatchProcess() {
 
     MasterProcessRegisterSignalHandlers();
 
-    int i = 0, j;
-    int child_pid;
-    Process *tc_process = nullptr;
-    //init process list and pipes
+    int i = 0;
     for (; i < global_config.GetProcessNum(); i++) {
-        tc_process = new Process;
-        tc_process->ready = false;
-        if (pipe(tc_process->pipes) < 0) {
-            global_log.Info({"Called Pipe Failed"});
-            exit(0);
-        }
-        child_process.push_back(tc_process);
-    }
-    i = 0;//reset
-    for (; i < global_config.GetProcessNum(); i++) {
-        if ((child_pid = fork()) < 0) {
-            KillAllProcess();
-        } else if (child_pid == 0) {
-            close(tc_process->pipes[0]);//child process only read from pipe
-            //for child process ,we only care about pipe related with the process,so close others
-            for (j = 0; j < i; ++j) {
-                close(child_process[j]->pipes[1]);
-            }
-            ChildProcessBootstrap();
-        } else {
-            tc_process->ready = true;
-            tc_process->pid_no = child_pid;
-            close(tc_process->pipes[1]);//parent process only write to pipe
-        }
+        RestartChildProcess();
     }
     MasterProcessBootstrap();
 }
@@ -169,6 +205,14 @@ void DispatchProcess() {
  * register signal handlers
  * **/
 void ChildProcessRegisterSignalHandlers() {
+    struct sigaction sig;
+    sigemptyset(&sig.sa_mask);
+    sig.sa_flags = SA_SIGINFO;
+    sig.sa_sigaction = ChildProcessSignalHandler;
+    sigaction(SIGINT, &sig, nullptr);
+    sigaction(SIGTERM, &sig, nullptr);
+    signal(SIGHUP, SIG_IGN);
+    signal(SIGALRM, SIG_IGN);
 }
 
 /**
@@ -189,7 +233,15 @@ void MasterProcessRegisterSignalHandlers() {
 /**
  * handler to process signal
  * **/
-void ChildProcessSignalHandler(int, siginfo_t *, void *) {}
+void ChildProcessSignalHandler(int sig_no, siginfo_t *info, void *context) {
+    switch (sig_no) {
+        case SIGINT:
+        case SIGTERM:
+            global_log.Info({"Child Process ", to_string(self_pid).c_str(), " receive close signal,so quit normally"});
+            CloseProcess(APP_NORMAL_EXIT_CODE);
+            break;
+    }
+}
 
 /**
  * handler to process signal
@@ -209,9 +261,12 @@ void MasterProcessSignalHandler(int sig_no, siginfo_t *info, void *context) {
             }
             break;
         case SIGHUP:
-            if (!server_should_restart) {
-                server_should_restart = true;
-                global_log.Info({"Received SIGHUP signal,server will restart"});
+            //received SIGTERM or SIGINT signal before SIGHUP
+            if (!scheduled_close_server) {
+                if (!server_should_restart) {
+                    server_should_restart = true;
+                    global_log.Info({"Received SIGHUP signal,server will restart"});
+                }
             }
         case SIGCHLD:
             global_log.Info({"Process ", to_string(info->si_pid).c_str(), " Quit"});
@@ -222,19 +277,39 @@ void MasterProcessSignalHandler(int sig_no, siginfo_t *info, void *context) {
     }
 }
 
-void KillAllProcess() {
+void ChildProcessBootstrap() {
+    ChildProcessRegisterSignalHandlers();
+    global_event_loop.AddEvent(self_related_pipes[1], EVENT_READABLE, &child_pipe_event_handler);
+    server->Loop();
+    server->WaitClient();
 }
 
-void ChildProcessBootstrap(int idx) {
-
+void ServerRestart() {
+    //notify child process closing itself
+    if (!has_notify_child_process_close) {
+        NotifyChildProcessClose();
+    } else {
+        //check response count from child process
+        if (AllChildProcessClosed()) {
+            //all child process closed
+            child_process.clear();
+            for (int i = 0; i < global_config.GetProcessNum(); i++) {
+                RestartChildProcess();
+            }
+            //reset global flags
+            server_should_restart = false;
+            has_notify_child_process_close = false;
+            response_count_from_client = 0;
+        }
+    }
 }
-
-void ServerRestart() {}
 
 
 void MasterProcessBootstrap() {
     int status;
     pid_t child_pid;
+    self_pid = getpid();
+    parent_pid = getppid();
     while (true) {
         if ((child_pid = wait(&status)) < 0) {
             if (errno == EINTR) {
@@ -258,6 +333,9 @@ void MasterProcessBootstrap() {
             } else {
                 //child process was killed by master process
                 global_log.Info({"Process", to_string(child_pid).c_str(), " Quit normal"});
+                //statics closed process count
+                NewChildProcessClosed();
+                SetChildProcessStatus(child_pid);
             }
         }
     }
@@ -269,33 +347,38 @@ void RestartChildProcess(pid_t child_pid) {
     Process *cp = *iterator;
     pid_t new_child_pid;
 
-    //erase old
-    while (iterator != child_process.end()) {
-        if (cp->pid_no == child_pid) {
-            close(cp->pipes[0]);
-            child_process.erase(iterator);
-            break;
+    if (child_pid > 0) {
+        //erase old
+        while (iterator != child_process.end()) {
+            if (cp->pid_no == child_pid) {
+                close(cp->pipes[0]);
+                child_process.erase(iterator);
+                break;
+            }
+            ++iterator;
         }
-        ++iterator;
     }
 
     if (pipe(n_process->pipes) < 0) {
         global_log.Info({"Pipe called failed,Stop restart ", to_string(child_pid).c_str()});
         free(n_process);
-        return;
+        exit(1);
     } else {
-        close(n_process->pipes[1]);
         if ((new_child_pid = fork()) < 0) {
             global_log.Info({"Fork called failed,Stop restart ", to_string(child_pid).c_str()});
             free(n_process);
-            return;
+            exit(1);
         } else if (new_child_pid > 0) {
+            close(n_process->pipes[1]);
             n_process->pid_no = new_child_pid;
             n_process->ready = true;
-            child_process.push_back(n_process);
+            child_process.push_back(n_process);//only parent process  required
         } else {
+            memcpy(self_related_pipes, n_process->pipes, 2);
+            self_pid = getpid();
+            parent_pid = getppid();
             for (int i = 0; i < child_process.size(); ++i) {
-                close(child_process[i]->pipes[1]);
+                close(child_process[i]->pipes[1]);//inherit from parent process
             }
             ChildProcessBootstrap();
         }
@@ -303,5 +386,24 @@ void RestartChildProcess(pid_t child_pid) {
 }
 
 void CloseServer() {
+    //firstly,we notify child process closing itself
+    if (!has_notify_child_process_close) {
+        NotifyChildProcessClose();
+    } else {
+        if (AllChildProcessClosed()) {
+            global_log.Info({"Master quit usual"});
+            CloseProcess(APP_NORMAL_EXIT_CODE);
+        }
+    }
+}
 
+void NotifyChildProcessClose() {
+    Package *pkg = new Package;
+    pkg->type = 1;//type=1,close
+    pkg->len = sizeof(Package);
+    size_t len = pkg->len;
+    for (int i = 0; i < child_process.size(); ++i) {
+        write(child_process[i]->pipes[0], pkg, len);
+    }
+    has_notify_child_process_close = true;
 }

@@ -10,6 +10,9 @@
 #include "EventCallback.h"
 #include "Event.h"
 
+
+extern EventLoop global_event_loop;//event system
+
 class Server : public EventCallback {
 protected:
     int port;//server port
@@ -18,7 +21,6 @@ protected:
     socklen_t sock_len;
     int back_log;
     timeval time_out;
-    EventLoop event_loop;//event system
     Socket_t client_connected;
 
     void CreateSocket();
