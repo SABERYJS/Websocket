@@ -48,3 +48,7 @@ bool Server::Handle(bool socket_should_close, void *global_event_loop) {
     }
     return true;
 }
+
+void Server::CloseListenSocket() {
+    close(sock);
+}

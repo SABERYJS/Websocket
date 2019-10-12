@@ -123,6 +123,19 @@ websocket/fast:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/build
 .PHONY : websocket/fast
 
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
 Config.o: Config.cpp.o
 
 .PHONY : Config.o
@@ -149,6 +162,33 @@ Config.s: Config.cpp.s
 Config.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Config.cpp.s
 .PHONY : Config.cpp.s
+
+Daemon.o: Daemon.cpp.o
+
+.PHONY : Daemon.o
+
+# target to build an object file
+Daemon.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Daemon.cpp.o
+.PHONY : Daemon.cpp.o
+
+Daemon.i: Daemon.cpp.i
+
+.PHONY : Daemon.i
+
+# target to preprocess a source file
+Daemon.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Daemon.cpp.i
+.PHONY : Daemon.cpp.i
+
+Daemon.s: Daemon.cpp.s
+
+.PHONY : Daemon.s
+
+# target to generate assembly for a file
+Daemon.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Daemon.cpp.s
+.PHONY : Daemon.cpp.s
 
 EchoServer.o: EchoServer.cpp.o
 
@@ -257,6 +297,33 @@ HttpResponse.s: HttpResponse.cpp.s
 HttpResponse.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/HttpResponse.cpp.s
 .PHONY : HttpResponse.cpp.s
+
+Log.o: Log.cpp.o
+
+.PHONY : Log.o
+
+# target to build an object file
+Log.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Log.cpp.o
+.PHONY : Log.cpp.o
+
+Log.i: Log.cpp.i
+
+.PHONY : Log.i
+
+# target to preprocess a source file
+Log.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Log.cpp.i
+.PHONY : Log.cpp.i
+
+Log.s: Log.cpp.s
+
+.PHONY : Log.s
+
+# target to generate assembly for a file
+Log.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/Log.cpp.s
+.PHONY : Log.cpp.s
 
 MessageHandler.o: MessageHandler.cpp.o
 
@@ -447,6 +514,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+net_utils.o: net_utils.cpp.o
+
+.PHONY : net_utils.o
+
+# target to build an object file
+net_utils.cpp.o:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/net_utils.cpp.o
+.PHONY : net_utils.cpp.o
+
+net_utils.i: net_utils.cpp.i
+
+.PHONY : net_utils.i
+
+# target to preprocess a source file
+net_utils.cpp.i:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/net_utils.cpp.i
+.PHONY : net_utils.cpp.i
+
+net_utils.s: net_utils.cpp.s
+
+.PHONY : net_utils.s
+
+# target to generate assembly for a file
+net_utils.cpp.s:
+	$(MAKE) -f CMakeFiles/websocket.dir/build.make CMakeFiles/websocket.dir/net_utils.cpp.s
+.PHONY : net_utils.cpp.s
+
+test.o: test.cpp.o
+
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.s
+.PHONY : test.cpp.s
+
 utils.o: utils.cpp.o
 
 .PHONY : utils.o
@@ -481,11 +602,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... websocket"
 	@echo "... edit_cache"
+	@echo "... websocket"
+	@echo "... test"
 	@echo "... Config.o"
 	@echo "... Config.i"
 	@echo "... Config.s"
+	@echo "... Daemon.o"
+	@echo "... Daemon.i"
+	@echo "... Daemon.s"
 	@echo "... EchoServer.o"
 	@echo "... EchoServer.i"
 	@echo "... EchoServer.s"
@@ -498,6 +623,9 @@ help:
 	@echo "... HttpResponse.o"
 	@echo "... HttpResponse.i"
 	@echo "... HttpResponse.s"
+	@echo "... Log.o"
+	@echo "... Log.i"
+	@echo "... Log.s"
 	@echo "... MessageHandler.o"
 	@echo "... MessageHandler.i"
 	@echo "... MessageHandler.s"
@@ -519,6 +647,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... net_utils.o"
+	@echo "... net_utils.i"
+	@echo "... net_utils.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"

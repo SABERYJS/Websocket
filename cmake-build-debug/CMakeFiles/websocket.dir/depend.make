@@ -4,8 +4,18 @@
 CMakeFiles/websocket.dir/Config.cpp.o: ../Config.cpp
 CMakeFiles/websocket.dir/Config.cpp.o: ../Config.h
 CMakeFiles/websocket.dir/Config.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/Config.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/Config.cpp.o: ../public.h
 CMakeFiles/websocket.dir/Config.cpp.o: ../utils.h
+
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../Daemon.cpp
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../Daemon.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../Log.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../SystemCallException.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../net_utils.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../public.h
+CMakeFiles/websocket.dir/Daemon.cpp.o: ../utils.h
 
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../Debug.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../EchoServer.cpp
@@ -21,6 +31,7 @@ CMakeFiles/websocket.dir/EchoServer.cpp.o: ../WebsocketProtocolParser.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../WebsocketResponse.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../WebsocketServer.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/EchoServer.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../public.h
 CMakeFiles/websocket.dir/EchoServer.cpp.o: ../utils.h
 
@@ -30,6 +41,7 @@ CMakeFiles/websocket.dir/Event.cpp.o: ../Event.h
 CMakeFiles/websocket.dir/Event.cpp.o: ../EventCallback.h
 CMakeFiles/websocket.dir/Event.cpp.o: ../SystemCallException.h
 CMakeFiles/websocket.dir/Event.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/Event.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/Event.cpp.o: ../public.h
 CMakeFiles/websocket.dir/Event.cpp.o: ../utils.h
 
@@ -40,6 +52,7 @@ CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../HttpProtocolParser.cpp
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../HttpProtocolParser.h
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../SystemCallException.h
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../public.h
 CMakeFiles/websocket.dir/HttpProtocolParser.cpp.o: ../utils.h
 
@@ -50,12 +63,21 @@ CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../HttpResponse.cpp
 CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../HttpResponse.h
 CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../SystemCallException.h
 CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../public.h
 CMakeFiles/websocket.dir/HttpResponse.cpp.o: ../utils.h
+
+CMakeFiles/websocket.dir/Log.cpp.o: ../Log.cpp
+CMakeFiles/websocket.dir/Log.cpp.o: ../Log.h
+CMakeFiles/websocket.dir/Log.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/Log.cpp.o: ../net_utils.h
+CMakeFiles/websocket.dir/Log.cpp.o: ../public.h
+CMakeFiles/websocket.dir/Log.cpp.o: ../utils.h
 
 CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../MessageHandler.cpp
 CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../MessageHandler.h
 CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../public.h
 CMakeFiles/websocket.dir/MessageHandler.cpp.o: ../utils.h
 
@@ -66,6 +88,7 @@ CMakeFiles/websocket.dir/Server.cpp.o: ../Server.cpp
 CMakeFiles/websocket.dir/Server.cpp.o: ../Server.h
 CMakeFiles/websocket.dir/Server.cpp.o: ../SystemCallException.h
 CMakeFiles/websocket.dir/Server.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/Server.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/Server.cpp.o: ../public.h
 CMakeFiles/websocket.dir/Server.cpp.o: ../utils.h
 
@@ -80,6 +103,7 @@ CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../WebsocketProtocolPars
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../WebsocketProtocolParser.h
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../WebsocketResponse.h
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../public.h
 CMakeFiles/websocket.dir/WebsocketProtocolParser.cpp.o: ../utils.h
 
@@ -90,6 +114,7 @@ CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../SystemCallException.h
 CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../WebsocketResponse.cpp
 CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../WebsocketResponse.h
 CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../public.h
 CMakeFiles/websocket.dir/WebsocketResponse.cpp.o: ../utils.h
 
@@ -106,6 +131,7 @@ CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../WebsocketResponse.h
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../WebsocketServer.cpp
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../WebsocketServer.h
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../public.h
 CMakeFiles/websocket.dir/WebsocketServer.cpp.o: ../utils.h
 
@@ -113,12 +139,14 @@ CMakeFiles/websocket.dir/base64.cpp.o: ../base64.cpp
 CMakeFiles/websocket.dir/base64.cpp.o: ../base64.h
 
 CMakeFiles/websocket.dir/main.cpp.o: ../Config.h
+CMakeFiles/websocket.dir/main.cpp.o: ../Daemon.h
 CMakeFiles/websocket.dir/main.cpp.o: ../Debug.h
 CMakeFiles/websocket.dir/main.cpp.o: ../EchoServer.h
 CMakeFiles/websocket.dir/main.cpp.o: ../Event.h
 CMakeFiles/websocket.dir/main.cpp.o: ../EventCallback.h
 CMakeFiles/websocket.dir/main.cpp.o: ../HttpProtocolParser.h
 CMakeFiles/websocket.dir/main.cpp.o: ../HttpResponse.h
+CMakeFiles/websocket.dir/main.cpp.o: ../Log.h
 CMakeFiles/websocket.dir/main.cpp.o: ../MessageHandler.h
 CMakeFiles/websocket.dir/main.cpp.o: ../Server.h
 CMakeFiles/websocket.dir/main.cpp.o: ../SystemCallException.h
@@ -127,10 +155,18 @@ CMakeFiles/websocket.dir/main.cpp.o: ../WebsocketResponse.h
 CMakeFiles/websocket.dir/main.cpp.o: ../WebsocketServer.h
 CMakeFiles/websocket.dir/main.cpp.o: ../base64.h
 CMakeFiles/websocket.dir/main.cpp.o: ../main.cpp
+CMakeFiles/websocket.dir/main.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/main.cpp.o: ../public.h
 CMakeFiles/websocket.dir/main.cpp.o: ../utils.h
 
+CMakeFiles/websocket.dir/net_utils.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/net_utils.cpp.o: ../net_utils.cpp
+CMakeFiles/websocket.dir/net_utils.cpp.o: ../net_utils.h
+CMakeFiles/websocket.dir/net_utils.cpp.o: ../public.h
+CMakeFiles/websocket.dir/net_utils.cpp.o: ../utils.h
+
 CMakeFiles/websocket.dir/utils.cpp.o: ../base64.h
+CMakeFiles/websocket.dir/utils.cpp.o: ../net_utils.h
 CMakeFiles/websocket.dir/utils.cpp.o: ../public.h
 CMakeFiles/websocket.dir/utils.cpp.o: ../utils.cpp
 CMakeFiles/websocket.dir/utils.cpp.o: ../utils.h

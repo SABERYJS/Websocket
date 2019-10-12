@@ -50,6 +50,8 @@ public:
     void WaitClient();
 
     bool Handle(bool socket_should_close, void *event_loop) override;
+
+    void CloseListenSocket();
 };
 
 #endif //WEBSOCKET_SERVER_H

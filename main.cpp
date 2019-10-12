@@ -20,6 +20,7 @@ Config global_config;
 Log global_log;
 EchoServer *server;
 
+
 //used for manage child process
 struct Process {
     bool ready;
@@ -45,6 +46,7 @@ char block[PIPE_BLOCK_SIZE] = {0};//pipe read buffer
 int last_block_write_pos = 0;//position for writing next time
 int response_count_from_client = 0;//used for close or restart server
 EventLoop global_event_loop; //global event system
+string config_file; //config file
 
 
 /**
@@ -99,6 +101,15 @@ void RestartChildProcess(pid_t child_pid = 0);
 void CloseServer();
 
 void NotifyChildProcessClose();
+
+void ParseConfig();
+
+void BootstrapServer();
+
+/**
+ * set process title
+ * **/
+int SetProcessTitle(int argc, char **argv, char *title, int len);
 
 inline bool AllChildProcessClosed() {
     return child_process.size() == response_count_from_client;
@@ -155,7 +166,6 @@ struct : public EventCallback {
 int main(int argc, char *argv[]) {
     int i = 0;
     bool config_file_specified = false;
-    string config_file;
     for (; i < argc; i++) {
         if (strncmp(argv[i], "-c", 2) == 0 && i != (argc - 1)) {
             config_file_specified = true;
@@ -164,23 +174,7 @@ int main(int argc, char *argv[]) {
         }
     }
     if (config_file_specified) {
-        try {
-            global_config.Parse(config_file);
-            global_log.Open(global_config.GetLogPath().c_str());
-            server = new EchoServer(global_config.GetPort(), INADDR_ANY, 10);
-            server->Loop();
-            DispatchProcess();
-        } catch (const char *error) {
-            cout << error << endl;
-            exit(1);
-        } catch (std::runtime_error error) {
-            cout << error.what() << endl;
-            exit(1);
-        } catch (SystemCallException &exception) {
-            cout << exception.what() << endl;
-            exit(1);
-        }
-
+        BootstrapServer();
     } else {
         cout << "-c option is required" << endl;
         exit(1);
@@ -188,9 +182,6 @@ int main(int argc, char *argv[]) {
 }
 
 void DispatchProcess() {
-    if (global_config.CheckRunAsDaemon()) {
-        RunAsDaemon();
-    }
 
     MasterProcessRegisterSignalHandlers();
 
@@ -278,6 +269,9 @@ void MasterProcessSignalHandler(int sig_no, siginfo_t *info, void *context) {
 }
 
 void ChildProcessBootstrap() {
+    char process_title[100] = {0};
+    sprintf(process_title, "websocket_worker_process_%d", self_pid);
+    SetProcessTitle(__arg_type_tag())
     ChildProcessRegisterSignalHandlers();
     global_event_loop.AddEvent(self_related_pipes[1], EVENT_READABLE, &child_pipe_event_handler);
     server->Loop();
@@ -310,6 +304,8 @@ void MasterProcessBootstrap() {
     pid_t child_pid;
     self_pid = getpid();
     parent_pid = getppid();
+    //close listen socket,because master process do not receive remote client connection
+    server->CloseListenSocket();
     while (true) {
         if ((child_pid = wait(&status)) < 0) {
             if (errno == EINTR) {
@@ -406,4 +402,101 @@ void NotifyChildProcessClose() {
         write(child_process[i]->pipes[0], pkg, len);
     }
     has_notify_child_process_close = true;
+}
+
+/**
+ * parse config file
+ * **/
+void ParseConfig() {
+    global_config.Parse(config_file);
+    global_log.Open(global_config.GetLogPath().c_str());
+}
+
+/**
+ * read config again
+ * **/
+void BootstrapServer() {
+    try {
+        ParseConfig();
+        if (global_config.CheckRunAsDaemon()) {
+            RunAsDaemon();
+        }
+        server = new EchoServer(global_config.GetPort(), INADDR_ANY, 10);
+        server->Loop();
+        DispatchProcess();
+    } catch (const char *error) {
+        cout << error << endl;
+        exit(1);
+    } catch (std::runtime_error error) {
+        cout << error.what() << endl;
+        exit(1);
+    } catch (SystemCallException &exception) {
+        cout << exception.what() << endl;
+        exit(1);
+    }
+}
+
+
+int SetProcessTitle(int argc, char **argv, char *title, int len) {
+    //linux system,argv and environ  stored one after another
+    //so set process title is complicated
+    char **p = argv;
+    size_t al = strlen(p[0]);
+    if (al >= len) {
+        //argv[0] has enough memory to store title,then just set argv[0]
+        memcpy(p[0], title, len);
+        //left space  reset to 0
+        memset(p[0] + len, 0, (al - len));
+        return 1;
+    } else {
+        //firstly allocate memory to store environment variables
+        size_t tl = 0;
+        size_t til;
+        char **pe = environ;
+        char *envBuf;
+        char *next;
+        int i = 0;
+        size_t nl;
+        while (*pe) {
+            tl += (strlen(*pe) + 1);//tail 0
+            pe++;
+        }
+        envBuf = static_cast<char *>(malloc(tl));
+        if (!envBuf) {
+            return -1;
+        }
+        pe = environ;//reset again
+        next = envBuf;
+        while (*pe) {
+            til = strlen(*pe);
+            memcpy(next, *pe, til);
+            environ[i++] = next;//reset global environ again
+            next += (til + 1);//include tail 0
+            pe++;
+        }
+
+        //args move backward,firstly calculate total memory length to store all  application args
+        tl = 0;
+        while (*p) {
+            tl += (strlen(*p) + 1);//include tail 0
+            p++;
+        }
+        p = argv;//reset again
+        nl = tl - al + len;//new args length
+        i = argc - 1;//copy from the last element
+        next = p[0] + nl;//last storage position
+        while (i >= 0) {
+            if (!i) {
+                til = len;
+            } else {
+                til = strlen(p[i]);
+            }
+            next -= (til + 1);
+            memcpy(next, !i ? title : p[i], til);
+            argv[i] = next;//reset argv
+            next[til] = 0;//Required,Very important
+            i--;
+        }
+        return 1;
+    }
 }

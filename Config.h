@@ -48,6 +48,11 @@ public:
         return log_file_path;
     }
 
+    /**
+     * config file changed
+     * **/
+    void ReadConfigFileAgain();
+
 };
 
 #endif //WEBSOCKET_CONFIG_H

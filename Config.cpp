@@ -8,6 +8,12 @@
 using namespace std;
 extern Config global_config;
 
+
+void Config::ReadConfigFileAgain() {
+    configs.clear();
+    Parse(config_filename);
+}
+
 void Config::Parse(string file) {
     if (file.length() <= 0 && config_filename.length() <= 0) {
         throw "Please Provide Invalid Config Filename";
